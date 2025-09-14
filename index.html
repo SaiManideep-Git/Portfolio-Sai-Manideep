@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Manideep Putchanutala - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #64748b;
+            --accent-color: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header Styles */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 2rem;
+            margin: -2rem -2rem 3rem -2rem;
+            border-radius: 0 0 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="white" fill-opacity="0.05"><circle cx="3" cy="3" r="1"/><circle cx="13" cy="13" r="1"/><circle cx="17" cy="7" r="1"/></g></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Section Styles */
+        .section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background: var(--accent-color);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Project Card */
+        .project-card {
+            border: 2px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: var(--primary-color);
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-stack strong {
+            color: var(--text-primary);
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Education & Activities */
+        .info-card {
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            background: var(--accent-color);
+            border-radius: 0 0.75rem 0.75rem 0;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+        
+        .info-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-subtitle {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-meta {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Resume Section */
+        .resume-section {
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: var(--accent-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .hero {
+                margin: -1rem -1rem 2rem -1rem;
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .contact-links {
+                gap: 1rem;
+            }
+        }
+        
+        /* Animation for sections */
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Sai Manideep Putchanutala</h1>
+                <p class="subtitle">Aspiring Developer specializing in Web Technologies and Machine Learning</p>
+                <div class="contact-links">
+                    <a href="https://github.com/SaiManideep-Git" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sai-manideep-putchanutala-7027022a5/" target="_blank">LinkedIn</a>
+                    <a href="https://leetcode.com/u/SaiManideep_70/" target="_blank">LeetCode</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">👨‍💻</div>
+                <h2>About Me</h2>
+            </div>
+            <p class="about-text">I am a dedicated and passionate developer driven by a deep interest in logic and complex problem-solving. My academic journey in computer science has solidified my desire to apply these skills to tackle challenging, real-world issues. I am eager to contribute to innovative projects that create a tangible impact and am committed to building robust, efficient, and meaningful technological solutions.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">⚡</div>
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">C</div>
+                <div class="skill-item">C++</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">Node.js</div>
+                <div class="skill-item">Express.js</div>
+                <div class="skill-item">MongoDB</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <h2>Projects</h2>
+            </div>
+            <div class="project-card">
+                <h3 class="project-title">Build and Beyond</h3>
+                <p class="project-description">A full-stack web platform that connects customers with professional builders, architects, and companies for large-scale construction projects. The platform facilitates project posting, bidding, hiring, and secure online payments.</p>
+                <p class="tech-stack"><strong>Tech Stack:</strong> React.js, Node.js, Express.js, MongoDB, Tailwind CSS</p>
+                <a href="https://github.com/kadiamyeshwanth/FDFED" target="_blank" class="project-link">
+                    View on GitHub →
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🎓</div>
+                <h2>Education</h2>
+            </div>
+            <div class="info-card">
+                <h3 class="info-title">Indian Institute of Information Technology, Sri City</h3>
+                <p class="info-subtitle">Bachelor of Technology (B.Tech) - Computer Science & Engineering</p>
+                <p class="info-meta">2023 - Present</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🏆</div>
+                <h2>Leadership & Activities</h2>
+            </div>
+            <div class="info-card">
+                <h3 class="info-title">Treasurer, Student Development Council</h3>
+                <p class="info-subtitle">Financial Management & Budget Planning</p>
+                <p class="project-description">Responsible for managing the council's finances, budgeting for events, and maintaining accurate financial records to support student activities and initiatives.</p>
+                <p class="info-meta">Indian Institute of Information Technology, Sri City</p>
+            </div>
+        </div>
+
+        <div class="section resume-section">
+            <div class="section-header">
+                <div class="section-icon">📄</div>
+                <h2>Resume</h2>
+            </div>
+            <p style="margin-bottom: 1rem; opacity: 0.9;">Download my complete resume for detailed information about my experience, skills, and achievements.</p>
+            <a href="#" class="resume-btn" target="_blank">
+                📥 Download Resume (PDF)
+            </a>
+        </div>
+    </div>
+</body>
+</html>
